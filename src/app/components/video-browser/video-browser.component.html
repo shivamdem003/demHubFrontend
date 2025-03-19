@@ -1,12 +1,35 @@
-<div class="container">
-  <h2>demHub Application</h2>
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="logo">
+    <span class="white-text">dem</span><span class="orange-text">Hub</span>
+  </div>
+</nav>
 
+<div class="video-container">
+  <div class="video-player" *ngIf="selectedVideoUrl">
+    <h3>Now Playing</h3>
+    <video controls autoplay>
+      <source [src]="selectedVideoUrl" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Video Info Section -->
+    <div class="video-info" >
+      <h2>{{ rootFolder?.name }}</h2>
+      <!-- <p>📁 Folder: {{ selectedVideoUrl }}</p> -->
+    </div> 
+  </div>
+
+</div>
+
+<div class="folder-container">
+  <h2>Episodes</h2>
   <ul *ngIf="rootFolder">
     <ng-container *ngFor="let item of rootFolder.children">
       <li>
         <!-- Folder Clickable -->
         <span *ngIf="item.folder" (click)="toggleFolder(item)" class="folder">
-          📁 {{ item.name }} <span *ngIf="item.expanded">(Click to Close)</span>
+          📁 {{ item.name }}
         </span>
 
         <!-- Expand subfolders -->
@@ -40,12 +63,4 @@
       </li>
     </ng-container>
   </ul>
-
-  <div *ngIf="selectedVideoUrl">
-    <h3>Now Playing</h3>
-    <video controls width="600">
-      <source [src]="selectedVideoUrl" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
 </div>
