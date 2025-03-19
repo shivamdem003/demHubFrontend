@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>Video Player</h2>
+  
+    <div class="video-list">
+      <button *ngFor="let video of videos" (click)="playVideo(video)">
+        {{ video }}
+      </button>
+    </div>
+  
+    <div class="video-player" *ngIf="selectedVideoUrl">
+      <h3>Now Playing</h3>
+      <video controls width="600" *ngIf="selectedVideoUrl">
+        <source [src]="selectedVideoUrl" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+  

@@ -1,0 +1,51 @@
+<div class="container">
+  <h2>demHub</h2>
+
+  <ul *ngIf="rootFolder">
+    <ng-container *ngFor="let item of rootFolder.children">
+      <li>
+        <!-- Folder Clickable -->
+        <span *ngIf="item.folder" (click)="toggleFolder(item)" class="folder">
+          📁 {{ item.name }} <span *ngIf="item.expanded">(Click to Close)</span>
+        </span>
+
+        <!-- Expand subfolders -->
+        <ul *ngIf="item.expanded">
+          <ng-container *ngFor="let subItem of item.children">
+            <li *ngIf="subItem.folder">
+              <span (click)="toggleFolder(subItem)" class="folder">
+                📂 {{ subItem.name }}
+              </span>
+              <ul *ngIf="subItem.expanded">
+                <li *ngFor="let subSubItem of subItem.children">
+                  <span *ngIf="subSubItem.folder" (click)="toggleFolder(subSubItem)" class="folder">
+                    📂 {{ subSubItem.name }}
+                  </span>
+                  <span *ngIf="!subSubItem.folder" (click)="playVideo(subSubItem.path)" class="video">
+                    🎬 {{ subSubItem.name }}
+                  </span>
+                </li>
+              </ul>
+            </li>
+            <li *ngIf="!subItem.folder" (click)="playVideo(subItem.path)" class="video">
+              🎬 {{ subItem.name }}
+            </li>
+          </ng-container>
+        </ul>
+      </li>
+
+      <!-- Video Files -->
+      <li *ngIf="!item.folder" (click)="playVideo(item.path)" class="video">
+        🎬 {{ item.name }}
+      </li>
+    </ng-container>
+  </ul>
+
+  <div *ngIf="selectedVideoUrl">
+    <h3>Now Playing</h3>
+    <video controls width="600">
+      <source [src]="selectedVideoUrl" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>

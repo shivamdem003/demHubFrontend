@@ -1,0 +1,19 @@
+.container {
+  text-align: left;
+  margin: 20px;
+}
+
+.folder {
+  font-weight: bold;
+  cursor: pointer;
+  color: blue;
+}
+
+.video {
+  cursor: pointer;
+  color: green;
+}
+
+.folder:hover, .video:hover {
+  text-decoration: underline;
+}
