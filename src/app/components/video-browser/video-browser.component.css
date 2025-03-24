@@ -43,6 +43,22 @@
   transition: all 0.3s ease;
 }
 
+/* Top-level folder styles */
+.top-level-folder {
+  padding: 12px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #444, #666);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect for top-level folders */
+.top-level-folder:hover {
+  background: linear-gradient(45deg, #666, #888);
+  transform: scale(1.05);
+}
+
+/* Hover effects */
 .folder:hover,
 .video:hover {
   background: #444;
@@ -79,9 +95,11 @@ ul {
   font-size: 24px;
   font-weight: bold;
 }
+
 .white-text {
   color: white;
 }
+
 .orange-text {
   color: #ff5733;
 }

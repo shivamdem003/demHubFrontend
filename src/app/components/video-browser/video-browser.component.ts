@@ -71,5 +71,7 @@ export class VideoBrowserComponent implements OnInit {
         videoElement.play();
       }
     }, 100);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the top smoothly
   }
+  
 }

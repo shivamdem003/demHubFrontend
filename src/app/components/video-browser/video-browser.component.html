@@ -14,12 +14,10 @@
     </video>
 
     <!-- Video Info Section -->
-    <div class="video-info" >
+    <div class="video-info">
       <h2>{{ rootFolder?.name }}</h2>
-      <!-- <p>📁 Folder: {{ selectedVideoUrl }}</p> -->
-    </div> 
+    </div>
   </div>
-
 </div>
 
 <div class="folder-container">
@@ -28,7 +26,7 @@
     <ng-container *ngFor="let item of rootFolder.children">
       <li>
         <!-- Folder Clickable -->
-        <span *ngIf="item.folder" (click)="toggleFolder(item)" class="folder">
+        <span *ngIf="item.folder" (click)="toggleFolder(item)" class="folder top-level-folder">
           📁 {{ item.name }}
         </span>
 
