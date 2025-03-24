@@ -81,10 +81,10 @@ ul {
 .navbar {
   width: 100%;
   background: #111;
-  padding: 15px 20px;
+  padding: 25px 30px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
   position: fixed;
   top: 0;
   left: 0;
@@ -111,12 +111,20 @@ ul {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  padding: 20px;
+  padding: 40px 20px 20px; /* Added 40px top padding */
   background-color: #181818;
   color: white;
 }
 
-/* Video Wrapper */
+/* Ensure the video player has some spacing */
+.video-player {
+  width: 80%;
+  max-width: 900px;
+  text-align: center;
+  margin-top: 20px; /* Adds additional spacing above the video */
+}
+
+/* Add padding to the video wrapper */
 .video-wrapper {
   width: 92%;
   max-width: 980px;
@@ -125,16 +133,12 @@ ul {
   border-radius: 12px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.7);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 15px; /* Ensures extra spacing above the video */
 }
 
 .video-wrapper:hover {
   transform: scale(1.02);
   box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.9);
-}
-
-.video-wrapper video {
-  width: 100%;
-  border-radius: 10px;
 }
 
 /* Video Details Section */
@@ -154,5 +158,39 @@ ul {
   padding: 10px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.search-container input {
+  width: 80%;
+  max-width: 400px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #ff6600; /* Orange border for contrast */
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.search-container input:focus {
+  border-color: #ff4500; /* Darker orange on focus */
+  box-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px; /* Adjust size as needed */
+  font-weight: bold;
+  color: #fff; /* Change color if necessary */
+  margin-top: 10px;
+}
+
+
+
+
 
 

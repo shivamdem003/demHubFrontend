@@ -27,17 +27,20 @@
 
 
 
+
+
 <div class="folder-container">
-  <h2>Episodes</h2>
-  <ul *ngIf="rootFolder">
-    <ng-container *ngFor="let item of rootFolder.children">
+  <h2>Cartoon Collection</h2>
+  <div class="search-container">
+    <input type="text" #searchBox (input)="filterFolders(searchBox.value)" placeholder="Search folders..." />
+  </div>
+  <ul *ngIf="filteredFolders.length">
+    <ng-container *ngFor="let item of filteredFolders">
       <li>
-        <!-- Folder Clickable -->
         <span *ngIf="item.folder" (click)="toggleFolder(item)" class="folder top-level-folder">
           📁 {{ item.name }}
         </span>
 
-        <!-- Expand subfolders -->
         <ul *ngIf="item.expanded">
           <ng-container *ngFor="let subItem of item.children">
             <li *ngIf="subItem.folder">
@@ -62,7 +65,6 @@
         </ul>
       </li>
 
-      <!-- Video Files -->
       <li *ngIf="!item.folder" (click)="playVideo(item.path, item.name)" class="video">
         🎬 {{ item.name }}
       </li>
