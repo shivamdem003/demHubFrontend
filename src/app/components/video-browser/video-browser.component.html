@@ -5,20 +5,27 @@
   </div>
 </nav>
 
+<!-- Video Container -->
 <div class="video-container">
   <div class="video-player" *ngIf="selectedVideoUrl">
-    <h3>Now Playing</h3>
-    <video controls autoplay>
-      <source [src]="selectedVideoUrl" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+
+    <!-- Video Player -->
+    <div class="video-wrapper">
+      <video controls autoplay>
+        <source [src]="selectedVideoUrl" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
 
     <!-- Video Info Section -->
-    <div class="video-info">
-      <h2>{{ rootFolder?.name }}</h2>
+    <div class="video-details">
+      <h2 class="video-title">{{ selectedVideoName || 'Unknown Video' }}</h2>
     </div>
+
   </div>
 </div>
+
+
 
 <div class="folder-container">
   <h2>Episodes</h2>
@@ -42,13 +49,13 @@
                   <span *ngIf="subSubItem.folder" (click)="toggleFolder(subSubItem)" class="folder">
                     📂 {{ subSubItem.name }}
                   </span>
-                  <span *ngIf="!subSubItem.folder" (click)="playVideo(subSubItem.path)" class="video">
+                  <span *ngIf="!subSubItem.folder" (click)="playVideo(subSubItem.path, subSubItem.name)" class="video">
                     🎬 {{ subSubItem.name }}
                   </span>
                 </li>
               </ul>
             </li>
-            <li *ngIf="!subItem.folder" (click)="playVideo(subItem.path)" class="video">
+            <li *ngIf="!subItem.folder" (click)="playVideo(subItem.path, subItem.name)" class="video">
               🎬 {{ subItem.name }}
             </li>
           </ng-container>
@@ -56,7 +63,7 @@
       </li>
 
       <!-- Video Files -->
-      <li *ngIf="!item.folder" (click)="playVideo(item.path)" class="video">
+      <li *ngIf="!item.folder" (click)="playVideo(item.path, item.name)" class="video">
         🎬 {{ item.name }}
       </li>
     </ng-container>

@@ -18,6 +18,7 @@ interface FileNode {
 export class VideoBrowserComponent implements OnInit {
   rootFolder: FileNode | null = null;
   selectedVideoUrl: string | null = null;
+  selectedVideoName: string | null = null;
 
   constructor(private videoService: VideoService) {}
 
@@ -51,8 +52,9 @@ export class VideoBrowserComponent implements OnInit {
   //   console.log("Playing Video:", filePath);  // ✅ Debugging Log
   // }
 
-  playVideo(filePath: string) {
+  playVideo(filePath: string, videoName: string) {
     const videoElement = document.querySelector("video");
+    this.selectedVideoName = videoName;
   
     // Stop current video before switching
     if (videoElement) {
