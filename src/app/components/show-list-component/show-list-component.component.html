@@ -1,3 +1,17 @@
+<!-- Slideshow Carousel -->
+<div class="carousel-container" *ngIf="slideshowShows.length > 0">
+  <div class="carousel-slide" [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
+    <div class="carousel-item" *ngFor="let show of slideshowShows">
+      <img src="assets/default-thumbnail.jpg" alt="{{ show.name }}" />
+      <div class="carousel-caption">{{ show.name }}</div>
+    </div>
+  </div>
+
+  <button class="carousel-btn left" (click)="prevSlide()">‹</button>
+  <button class="carousel-btn right" (click)="nextSlide()">›</button>
+</div>
+
+
 <div class="landing-container">
   <h2 class="section-title">Cartoon Collection</h2>
 
