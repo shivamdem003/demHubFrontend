@@ -1,0 +1,20 @@
+<div class="landing-container">
+  <h2 class="section-title">Cartoon Collection</h2>
+
+  <div class="tiles-grid">
+    <div 
+      class="show-tile"
+      *ngFor="let show of visibleShows"
+      (click)="goToShow(show)">
+      <div class="thumbnail-placeholder">
+        <span class="emoji">📺</span>
+      </div>
+      <br>
+      <div class="show-name">{{ show.name }}</div>
+    </div>
+  </div>
+
+  <div class="show-more-container" *ngIf="shows.length > initialLimit && !showAll">
+    <button (click)="showMore()">Show More</button>
+  </div>
+</div>

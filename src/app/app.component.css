@@ -1,0 +1,5 @@
+.main-content {
+    min-height: calc(100vh - 140px); /* Adjust based on header + footer height */
+    background-color: #121212;
+  }
+  

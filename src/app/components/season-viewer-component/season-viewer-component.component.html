@@ -1,0 +1,30 @@
+<!-- Theater-style Video Player -->
+<div class="video-player" *ngIf="selectedVideoUrl">
+  <video controls autoplay class="theater-video">
+    <source [src]="selectedVideoUrl" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <h2 class="video-title">{{ selectedVideoName }}</h2>
+</div>
+
+<!-- Show Title -->
+<h2 class="section-title">{{ showName }}</h2>
+
+<!-- Season and Episodes -->
+<div *ngFor="let season of seasons" class="season-block">
+  <div class="season-header" (click)="toggleSeason(season)">
+    <h3>{{ season.name }}</h3>
+    <span class="toggle-icon">{{ season.expanded ? '▲' : '▼' }}</span>
+  </div>
+
+  <div class="episode-list" *ngIf="season.expanded">
+    <div
+      class="episode-card"
+      *ngFor="let episode of season.children"
+      (click)="playVideo(episode)"
+    >
+      <div class="thumbnail">🎬</div>
+      <div class="episode-name">{{ episode.name }}</div>
+    </div>
+  </div>
+</div>
